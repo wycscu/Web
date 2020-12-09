@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		hr {
+			width: 100%;
+			height: 2px;
+			margin: 10px auto;
+			background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+		}
+	</style>
+	<script type="text/javascript" src="./JavaScript/removeSpaceNode.js"></script>
+	<script type="text/javascript" src="./JavaScript/removeSpaceNodeFromParentNode.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var Odiv = document.getElementById('div1');
+			alert(Odiv.childNodes.length);  //5
+			//var nodes = removeSpaceNode(Odiv.childNodes);
+			//alert(nodes.length) //3
+			removeSpaceNodeFromParentNode(Odiv);
+			alert(Odiv.childNodes.length)
+			alert(Odiv.innerHTML)
+		}
+		
+		//  alert(/^\s+$/.test('   ')) //利用正则式判断是否为空，并封装函数
+		
+	</script>
+	<body>
+		<!-- <div id="div1"><em>斜体文字</em>text<strong>粗体文字</strong></div>  -->
+		<!-- 3 -->
+		<div id="div1">
+			<em>斜体文字</em>
+			text
+			<strong>粗体文字</strong>
+		</div>
+		缩进后元素节点增加了，因为回车、换行、tab、空格和字符都算是文本元素 <br>
+		<hr >
+		Q： 如何将空白节点取出？ <br>
+		A： 首先要识别空白节点：通过正则表达式取出  /^\s+$/.test()  如果符合，返回true否则返回false <br>
+		<br>
+		使用removeSpaceNode.js文件，只能返回一个删除了空白节点的数组，如果想要真正意义上删除空白节点，则需要使用firstchild和lastchild，从父节点上删除空白节点 <br>
+		使用removeSpaceNodeFromParentNode.js文件，由于是从父节点删除其childnodes，所以可以删掉空白节点。但是要注意删除数组元素的时候必须倒序删除。如果正序删除，可能会导致序号错位，空白节点无法被删除。
+	</body>
+</html>

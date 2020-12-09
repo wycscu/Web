@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+	
+		hr{
+			width: 100%;
+			height: 2px;
+			margin: 10px auto;
+			background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			
+	
+		//ES5
+		// var obj = {'name':'john','age':20}; //,分隔
+		// name = obj.name;
+		// age = obj.age;
+		// console.log('name:'+name+' ; age:'+age)
+		
+		//ES6  面向对象 使用${}
+			// let obj = {'name':'john','age':20};
+			// let{name,age} = obj;
+			// console.log(`${name}的年龄是${age}`);
+			// console.log(`${name}`);
+			
+			
+			
+			
+			//新增元素
+			var arr = [1,2,3,4,5];
+			var html = '';
+			let oUl = document.getElementById('test');
+			
+			//Es5
+			
+			// for(var i in arr){
+			// 	html += '<li>' + arr[i] + '</li>'
+			// }
+				
+			// oUl.innerHTML = html;
+			
+			
+			//Es6
+			
+			for(var i in arr){
+				html += `<li><a href='www.baidu.com'>${arr[i]}</a></li>`
+			}
+			oUl.innerHTML = html
+			
+			//换行操作
+			//Es5
+			console.log('换行：')
+			var strTemp = 'abcdefg\n'+
+			    'hijklmn';
+			console.log(strTemp);
+			//Es6
+			var strTemp2 = `abcdefg
+hijklmn`;   //注意缩进也会算入空白字符
+			console.log(strTemp2)
+			
+			
+			//箭头函数
+			//Es5
+			// var foo = function(){
+			// 	return 1;
+			// }
+			// console.log(foo());
+			
+			//Es6:
+			//单条语句
+			let foo = () => 1;
+			console.log(foo())
+			
+			//含参
+			let foo_1 = (a) => a;
+			console.log(foo_1(3))
+			
+			//多条语句:花括号
+			let foo_2 = (a) => {
+				let b = 10;
+				return a+b;
+			}
+			console.log(foo_2(5));
+			
+			//this指向问题
+			//Es6一般也是指向window
+			//ES5:
+			var name = 'window';
+			// var obj = {
+			// 	'name':'john',
+			// 	'age':20,
+			// 	'sayHello':function(){
+			// 	console.log(this.name,this.age)  
+			// }}; //,分隔
+			// obj.sayHello();
+			//此时输出john，说明this指向obj
+			
+			//ES6
+			var obj2 = {
+				'name':'jack',
+				'age':22,
+				'sayHello':() => {
+					console.log(this.name);
+				}
+			}
+			console.log(window.name)
+			obj2.sayHello();
+		}
+	</script>
+	<body>
+		<h2>模板字符串</h2>
+		将变量或表达式直接嵌入字符串，利用反引号(``)拼接多行字符串
+		<hr >
+		<ul id='test'>
+		</ul>
+		<br>
+		加入节点 <br>
+		换行：见console<br>
+		箭头函数：只有一个表达式，含有多条语句，this的指向问题
+	</body>
+</html>

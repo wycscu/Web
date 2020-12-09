@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		ol li{
+			font-size: x-large;
+			font-weight: 600;
+		}
+		span{
+			font-size: large;
+			font-weight: 500;
+		}
+		ul{
+			list-style: disc;
+		}
+		hr{
+			margin: 10px auto;
+			height: 3px;
+			background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+		}
+		
+		@keyframes bigger{
+			0%{
+				font-size: x-large;
+			}
+			25%{
+				font-size: xx-large;
+			}
+			50%{
+				font-size: x-large;
+			}
+			75%{
+				font-size: xx-large;
+			}
+		}
+		
+		a{
+			font-size: x-large;
+			color: red;
+			line-height: 50px;
+			animation: bigger 3s ease-in-out infinite;
+		}
+		
+	
+		
+		.abc{
+			width: 100%;
+			height: 50px;
+			border: 1px;
+		}
+	
+	
+		
+	</style>
+	<script type="text/javascript">
+	
+			//定义
+		var set = new Set([1,2,3,4,5]);
+		console.log(set);
+		
+		//转换成数组需要使用拓展运算符...
+		var arr = [...set];
+		console.log(arr);
+		
+		//遍历
+		for(let i of set){
+			console.log(i);
+		}
+		
+		//-------------------------------------
+		console.log(set.add(0));
+		console.log(set.add(1));
+		console.log('does set has 1??  '+ set.has(1))
+		console.log('can 1 be deleted?  '+ set.delete(1));
+		console.log('does set has 1??  '+ set.has(1))
+		
+	
+		//-------------------------------------
+		console.log('keys返回iterator')
+		console.log(set.keys())  
+		//SetIterator {2, 3, 4, 5, 0}
+		console.log('遍历keys')
+		for(let item of set.keys()){
+			console.log(item);
+		}
+		//2 3 4 5 0
+		console.log('entries')
+		for(let [k,v] of set.entries()){
+			console.log(k,v)
+		}
+		//2 2 3 3 4 4 5 5 0 0 
+		console.log('forEach，key，value*2')
+		set.forEach((k,v)=> console.log(k,v*2))
+		
+		
+		
+	
+	</script>
+	<body>
+		<ol>
+			<li>定义:  let set = new Set([1,2,3,4]);</li>
+			<li>转换为数组：var arr = [...set];</li>
+			<li>set储存任何类型的唯一值，无论是原始值还是对象引用。</li>
+			<li>for of遍历 &nbsp;&nbsp;&nbsp;  
+			<div class="abc">
+				<a href="For Each For in For of用法.html" target = '_blank'>更多遍历方法看此页</a>
+			</div></li>
+			<li>set size设置</li>
+			</ol>
+				<span>	
+				<ul>
+					<li>set.size() 返回set中值的个数</li>
+					<li>set.add(value)  在set对象尾部添加一个元素（如果set中没有），返回set对象</li>
+					<li>set.delete(0)  移除Set中与这个值相等的元素，返回Set.prototype.has(value)在这个操作前会返回的值。即如果该元素存在，返回true，否则返回false</li>
+					<li>set.has(0)  是否含有某元素</li>
+					<li>set.clear()</li>
+					<hr >
+					<li>keys(): 返回一个新的迭代器对象，该对象包含Set对象中的按插入顺序排列的所有元素的值。</li>
+					<li>values():同keys()</li>
+					<li>entries()  返回键值对的遍历器  键值对的键和值是相等的。因为set无序且元素不可重复，所以没有索引一说</li>
+					<br>这一方法是为了和Map对象保持一致。<div class="abc">
+						<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank">详情</a>
+					</div>
+					<li>forEach() 使用回调函数遍历kv</li>
+				</ul>
+				</span>
+		
+		
+	</body>
+</html>

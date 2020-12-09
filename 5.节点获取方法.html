@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			var Odiv = document.getElementById('div1');
+			//alert(Odiv);
+			alert(document.getElementById('div1').tagName);
+			alert(document.getElementById('div1').innerHTML);
+			alert(Odiv.style.backgroundColor)
+		}
+	</script>
+	<body>
+		<h3>1.查找元素节点</h3>	
+		<br>
+		document.getElementById()  &nbsp;&nbsp;&nbsp;  通过元素节点的id获取节点
+		<br>
+		注意使用的时候要先window.onload
+		<br>
+		<br>
+		<h3>2.查找属性节点</h3>
+		在获取到特定的元素节点后，可以访问它的一系列属性,如tagName和innerHTML
+		<br>
+		其中tagname是元素节点的标签名<br>
+		<br>
+		HTML属性的属性：
+		<ul>
+			<li>id:元素节点的id名称</li>
+			<li>title:元素节点的title属性值</li>
+			<span>注意：在访问style样式时，类似background-color这种用-连接的属性需要去掉-，并将后续单词的首字母大写</span>
+			<li>style:css属性</li>
+			<li>className:css元素的类</li>
+		</ul>
+	<div id="div1" class="name" style="background-color: aqua;">test</div>
+	
+	</body>
+
+</html>

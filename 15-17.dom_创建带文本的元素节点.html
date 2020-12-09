@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#box1{
+			width: 300px;
+			height: 300px;
+			background-color: aquamarine;
+		
+		}
+		tr td{
+			font-size: 1.5em;
+		}
+		hr{
+			margin: 10px auto;
+			width: 100%;
+			height: 2px;
+			background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+		}
+	</style>
+	<script type="text/javascript" src="./JavaScript/createElementWithTxt.js"></script>
+	<script type="text/javascript" src="JavaScript/insertAfter.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var Odiv = document.getElementById('box1');	
+			
+			
+			var Obtn1 = document.getElementById('btn1');
+			Obtn1.onclick = function(){
+				document.write("<h1>Header</h1>")  //覆盖原有内容
+				}
+							
+			var Obtn2 = document.getElementById('btn2');
+			Obtn2.onclick = function(){
+				var node = document.createElement("span"); //新建span节点
+				Odiv.appendChild(node);
+			}
+			
+			var Obtn3 = document.getElementById('btn3');
+			Obtn3.onclick = function(){
+			//	Otext = document.createTextNode('HELLO WORLD!'); //新建文本节点
+			//	var node = document.createElement("span"); //新建span节点
+			//	Odiv.appendChild(node);  //将span节点插入div
+			//  node = appendChild(Otext); //将text插入span
+			var node = createElementWithTxt('span','helloworld');
+				Odiv.appendChild(node);  
+			}
+			
+			var Obtn4 = document.getElementById('btn4');
+			Obtn4.onclick = function(){
+			var node = createElementWithTxt('span','helloworld|');
+			var Ospan = document.getElementsByTagName('span')[1];
+			//	Ospan.parentNode.insertBefore(node,Ospan);  
+			   insertAfter(node,Ospan);
+			}
+			
+			var Obtn5 = document.getElementById('btn5');
+			Obtn5.onclick = function(){
+			//	Otext = document.createTextNode('HELLO WORLD!'); //新建文本节点
+			//	var node = document.createElement("span"); //新建span节点
+			//	Odiv.appendChild(node);  //将span节点插入div
+			//  node = appendChild(Otext); //将text插入span
+			var node = createElementWithTxt('span','2->helloworld|');
+			var Ospan = document.getElementsByTagName('span')[1];
+			//	Ospan.parentNode.insertBefore(node,Ospan);  
+			   Ospan.parentNode.replaceChild(node,Ospan);
+			}
+			
+			var Obtn6 = document.getElementById('btn6');
+			Obtn6.onclick = function(){
+			//	Otext = document.createTextNode('HELLO WORLD!'); //新建文本节点
+			//	var node = document.createElement("span"); //新建span节点
+			//	Odiv.appendChild(node);  //将span节点插入div
+			//  node = appendChild(Otext); //将text插入span
+			var Ospan = document.getElementsByTagName('span')[1];
+			var node = Odiv.cloneNode(true);
+			Ospan.parentNode.insertBefore(node,Ospan);
+			}
+			
+			var Obtn7 = document.getElementById('btn7');
+			Obtn7.onclick = function(){
+			//	Otext = document.createTextNode('HELLO WORLD!'); //新建文本节点
+			//	var node = document.createElement("span"); //新建span节点
+			//	Odiv.appendChild(node);  //将span节点插入div
+			//  node = appendChild(Otext); //将text插入span
+			var Ospan = document.getElementsByTagName('span')[0];
+			var node = Odiv.removeChild(Ospan);
+			 
+			 
+			}
+		}
+		
+	</script>
+	<body>
+		<div id="box1">
+			<span>1|</span>
+			<span>2|</span>
+			<span>3</span>
+		</div>
+		<button type="button" id="btn1">按钮1</button>
+		write  ---->   点击按钮后，会将页面的原本内容覆盖掉
+		<br>
+		<button type="button" id="btn2">按钮2</button>
+		appendChild ---->   点击按钮后，在div里新增span节点
+		<br>
+		<button type="button" id="btn3">按钮3</button>
+		appendChild(封装createElementWithTxt函数)  ---->   点击按钮后，在新建的span节点里新增文本
+		<br>
+		<button type="button" id="btn4">按钮4</button>
+		insertBefore(封装insertAfter) ---->  点击按钮后，将新增节点插入2-3间
+		<br>
+		<button type="button" id="btn5">按钮5</button>
+		replaceChild  ---->  点击按钮后，新增节点将替换2节点
+		<br>
+		<button type="button" id="btn6">按钮6</button>
+		clone ---->  点击按钮后，复制div节点
+		<br>
+		<button type="button" id="btn7">按钮7</button>
+		removeChild ---->  点击按钮后，移除节点span[0]
+		<br>
+		
+		<br>
+		<br>
+		<hr >
+		<span style="color: indianred;font-size: 1.5em;">DOM不仅可以查找节点，也可以创建节点，复制节点，删除节点，插入节点，替换节点。</span>
+		<table border="1px" cellspacing="0" cellpadding="5px">
+			<tr>
+				<th>方法</th>
+				<th>格式</th>
+				<th>说明</th>
+				
+			</tr>
+			<tr>
+				<td>write()</td>
+				<td></td>
+				<td>将字符串插入文档中</td>
+			</tr>
+			<tr>
+				<td>createElement()</td>
+				<td>document.createElement(标签名)</td>
+				<td>创建元素节点</td>
+			</tr>
+			<tr>
+				<td>appendChild()</td>
+				<td>parent.appendChild(newNode)</td>
+				<td>将新节点newNode追加到Parent子节点列表的末尾</td>
+			</tr>
+			<tr>
+				<td>createTextNode()</td>
+				<td>document.createTextNode(文本)</td>
+				<td>创建文本节点</td>
+			</tr>
+			<tr>
+				<td>insertBefore()</td>
+				<td>父节点.insertBefore(插入的节点，插入到哪个旧节点前)</td>
+				<td>将新节点插入在前面</td>
+			</tr>
+			<tr>
+				<td>replaceChild()</td>
+				<td>parent.replaceChild(newNode,oldNode)</td>
+				<td>将新节点替换旧节点</td>
+			</tr>
+			<tr>
+				<td>cloneNode()</td>
+				<td>node.clone(true/false)  true会复制元素节点中的文本内容，false不复制。默认false</td>
+				<td>复制节点,返回值是新克隆出的节点</td>
+			</tr>
+			<tr>
+				<td>removeChild()</td>
+				<td>node.parentNode.removeChild(node)</td>
+				<td>移除节点</td>
+			</tr>
+		</table>
+		<br>
+		P.S. 系统没有提供带文本的元素节点，因此必须先创建元素节点和文本节点，再分别将两个节点插入parent子节点和newNode新增元素节点里，或封装函数
+		<br>同理，系统没有提供insertAfter，需要自己封装后使用
+	</body>
+</html>

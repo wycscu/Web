@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		hr{
+			width: 100%;
+			height: 1px;
+			background:linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+		}
+	</style>
+	<script type="text/javascript">
+		//1.字面量方式创建RE
+		var reg = /abc/g;
+		//2.构造函数
+		var reg_1 = new RegExp('abc');
+		//var reg_2 = /abc/gi;
+		var reg_2 = new RegExp('abc','gi')
+		
+		//测试正则表达式的方法：test
+		var str = 'cbabcabcbacABC';
+		// var flag = reg.test(str);
+		// var flag_1 = reg_2.test(str)
+		
+		//match
+		var flag = str.match(reg);
+		var flag_1 = str.match(reg_2)
+		var flag_2 = str.search(reg_2)
+		console.log(flag);
+		console.log(flag_1);
+		console.log(flag_2)
+		//replace
+		var dirty = '卧槽tmd真就白给啊';
+		var reg_3 = /tmd/gi;
+		console.log(dirty);
+		console.log(dirty.replace(reg_3,'*'))
+		console.log(reg.exec(str))
+		//exec
+		console.log(reg.exec(str))
+		console.log(reg.exec(str))
+	</script>
+	<body>
+		正则表达式regular expression，一种由普通字符和特殊字符组成的对字符串进行过滤的逻辑公式。 <br>
+		创建方式：
+		<ol>
+			<li>字面量</li>
+			<li>构造函数 new RegExp</li>
+		</ol>
+		<br>
+		test方法：用于检测字符串是否含有符合规则的子串，并返回布尔值
+		<br>
+		match方法：检测字符串出现的次数以及匹配到的子串
+		<br>
+		search方法：查找符合的子串并返回第一个匹配的位置
+		<br>
+		split:分割 <br>
+		replace：替换 <br>
+		exec方法，正则表达式方法，将匹配成功的内容放到数组里，匹配不成功返回null.
+		<br>
+		需要注意，exec只能返回一个匹配项，如果需要匹配新的匹配项，需要在匹配模式中设置全局（g)并重复调用exec()方法。
+		<br>
+		index参数表示匹配项在字符串中的位置，input表示应用RE的字符串
+		
+		
+		<hr >
+		
+		flags：标志，常用的有：
+		<br>
+		<ul>
+			<li>g global 表示全局模式，模式被应用于所有字符串，而非在匹配到第一个之后就停止</li>
+			<li>i case-intensive 表示不区分大小写</li>
+			<li>m multiple 多行模式，表示在匹配完一行后还会在下一行查找是否有匹配的项</li>
+		</ul>
+	</body>
+</html>

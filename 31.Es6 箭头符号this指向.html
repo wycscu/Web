@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		
+		//this指向问题
+		//Es6一般也是指向window
+		//ES5:
+		var name = 'window';
+		var obj = {
+			'name':'john',
+			'age':20,
+			'sayHello':function(){
+			console.log(this.name,this.age)  //john 20
+		}}; //,分隔
+		obj.sayHello();
+		//此时输出john，说明this指向obj
+		
+
+		var obj2 = {
+			'name':'jack',
+			'age':22,
+			'sayHello':()=>{
+				console.log(this.name);//window
+			}
+		}
+		obj2.sayHello();
+		//window
+		
+		//等价写法：
+		var obj3 = {};
+		obj3.name = 'john';
+		console.log(this); //window对象
+		obj3.sayHello = ()=>{
+			console.log(this.name) //window
+		}
+		obj3.sayHello();
+		//此时输出window，说明this指向window。这是因为里的箭头函数，也就是sayHello，所在的作用域其实是最外层的js环境
+		//因为没有其他函数包裹；然后最外层的js环境指向的对象是winodw对象，所以这里的this指向的是window对象。
+		
+		
+		var obj4 = {
+			'name':'jack',
+			'sayHello':function(){  //function将对象转移到obj
+				console.log(this);
+				setTimeout(()=>{console.log(this.name)},1000);
+			}
+		}
+		obj4.sayHello();
+		//jack
+
+	</script>
+	<body>
+		Es6中箭头函数指向定义时所在的作用域，而不是执行时所在的作用域
+	</body>
+</html>
