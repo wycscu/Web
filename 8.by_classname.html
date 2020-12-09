@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+	//	window.onload = function(){
+			//Oul = document.getElementById('ul1');
+		//	Aliz = Oul.getElementsByClassName('box1');
+			//for(var i =0; i<Aliz.length;i++){
+				//alert(Aliz[i].innerHTML)
+		//	}
+	//	}
+	</script>
+	<script type="text/javascript"  src="./JavaScript/elementByClassName.js">
+	
+	</script>
+	<script type="text/javascript">
+		window.onload = function(){
+			Oul = document.getElementById('ul1');
+			var nodes = elementByClassName(Oul,'box2');
+			//封装好的函数
+		//	alert(nodes.length)
+			for(var i=0; i<nodes.length;i++){
+				alert(nodes[i].innerHTML);
+				}
+		}
+	</script>
+	<body>
+		node.getElementsByClassName() <br>
+		获取node节点下所有符合条件的元素节点 <br>
+		参数 class <br>
+		返回值：所有符合条件的元素节点组成的数组 <br>
+		低版本的IE不支持该方法
+		
+		<br><br>
+		<ul id="ul1">
+			<li class="box1">1</li>
+			<li class="box1">2</li>
+			<li class="box2">3</li>
+			<li class="box2">4</li>
+		</ul>
+		
+		<ol id="ol1">
+			<li class="box1">5</li>
+			<li class="box1">6</li>
+			<li class="box2">7</li>
+			<li class="box2">8</li>
+		</ol>
+	</body>
+</html>

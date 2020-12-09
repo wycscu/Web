@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		//基础遍历
+		    var array = [1,2,3,4,5,6,7];  
+		   // for (var i = 0; i < array.length; i) {  
+		   //     console.log(i,array[i]);  
+		   // }  
+		
+		
+		//for in 遍历
+		for (let index in array){
+			console.log(index,array[index]);
+		}
+		//输出索引
+		
+		
+		
+		// array.forEach(v=>{
+		// 	console.log(v);
+		// })
+		//输出元素
+		
+		
+		
+		
+		for(let i of array){
+			console.log(i);
+		}
+		//输出元素
+	</script>
+	<body>
+		for in 总是得到对象的索引，或数组字符串的下标。 <br>
+		for of 和forEach一样都是得到元素。 <br>
+		for in不仅可以对数组，也可以对ennumerable使用，得到索引。 <br>
+		for of为es6新增语法 <br>
+		
+	</body>
+</html>

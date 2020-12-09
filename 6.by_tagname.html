@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+		//	var oUL = document.getElementById('ul1')
+		//	var aLis = oUL.getElementsByTagName('li');
+		//通过上面写法可以只获取ul里的li标签
+			
+			var aLis = document.getElementsByTagName('li');
+			alert(aLis)
+			for(var i=0;i<aLis.length;i++){
+				alert(aLis[i].innerHTML);	
+			}
+			
+		}
+	</script>
+	<body>
+		node.GetElementByTagName()
+		<br>参数：标签名
+		<br>功能：获取node节点下所有符合该标签名的元素节点。如果是document，则获取当前页面所有符合条件的元素节点。
+		<br>返回值：一个装有符合条件的元素节点的数组（HTML Collection）
+		<br> <br>
+		例子：
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ol>
+			<li>a</li>
+			<li>b</li>
+			<li>c</li>
+			<li>d</li>
+		</ol>
+	</body>
+</html>

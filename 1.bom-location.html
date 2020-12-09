@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		hr{
+			margin: 10px auto;
+			height:1px;
+			width: 100%;
+			background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+		}
+	</style>
+	<body>
+		URL———Universal Resource Locator
+		<br> <br>
+		protocol:host:port/pathname?search#hash
+		<br>
+		protocol:协议<br>
+		host 主机 <br>
+		port 端口 <br>
+		pathname 路径 <br>
+		search 查询字符串 <br>
+		hash 锚点 <br>
+		<hr >
+		bom_location方法：
+		<ul>
+			<li>assign()</li>
+			跳转到指定的url(当前页面)
+			<li>reload()</li>
+			重载当前url,如果传参，参数为true，强制从服务器重载，消除缓存
+			<li>replace()</li>
+			用新的URL替换当前页面，避免产生跳转前的历史记录
+		</ul>
+		<script type="text/javascript">
+			window.onload = function(){
+				var Obtn1 = document.getElementById('btn1')
+				Obtn1.onclick = function(){
+					location.assign('http://baidu.com')
+					//location.reload(true);
+				
+				}
+			}
+		</script>
+		
+		<br>
+		<input type="button"  id="btn1" value="按钮1" /> assign <br><br>
+	
+		
+		<span style="font-size: 2em;color: red;margin: 10px auto;">
+			Enjoy this page for 5s(otherwise click the button ahead), cuz you won't get back here
+		</span>
+		<br><br>
+		assign跳转后还可以回退到原来的页面，但replace的操作是永久的，不可回退
+	</body>
+</html>

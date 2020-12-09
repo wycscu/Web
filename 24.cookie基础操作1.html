@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript" src="JavaScript/setCookie.js"></script>
+	<script type="text/javascript" src="JavaScript/getCookie.js"></script>
+	<script type="text/javascript" src="JavaScript/removeCookie.js"></script>
+	<script type="text/javascript">
+		//查询cookie
+		
+		//设置cookie
+		//oDate = new Date();
+		//oDate.setDate(oDate.getDate()+3); //3天后过期
+		//document.cookie = 'username=honey;expires='+oDate;
+		//修改cookie
+		//document.cookie = 'username=honey_1';
+		//删除cookie
+		window.onload = function(){
+			setCookie('usr1','honey1',1);
+			setCookie('usr2','honey2',1);
+			console.log(getCookie('usr1')); //USR2不显示
+			removeCookie('usr1');
+		}
+		
+		
+		
+	</script>
+	<body>
+		cookie是缓存在本地客户端的数据 <br>
+		cookie支持增删查改
+		<br>
+		设置后存在于本地服务器，如果关闭浏览器cookie将被清除
+		<br>
+		为cookie操作封装三个函数:setCookie,getCookie和removeCookie
+	</body>
+</html>

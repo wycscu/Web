@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		html body{
+			background-color: rgb(254,223,225);
+		}
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#outer{
+		display: flex;
+		flex-wrap: wrap;
+		width: 50%;
+		margin: 0 auto;
+		
+		}
+		#inner{
+			padding-top:100px ;
+			justify-content: center;
+			margin: 10px auto;
+			font-size: x-large;
+			
+		}
+	
+		#inner2{
+			padding-top: 100px;
+			justify-content: center;
+			margin: 10px auto;
+			font-size: x-large;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oInput = document.getElementById('username');
+			var oInput1 = document.getElementById('username1');
+			
+			oInput.onchange = function(){
+				var value = this.value;
+				//var reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,15}$/;
+				var reg = /^[a-zA-Z_]\w{5,14}$/;
+				var err_reg_1 = /^[a-zA-Z_]\w{0,4}$/;
+				var err_reg_2 = /^\d\w+$/;
+				var err_reg_3 = /^$/;
+				if(reg.test(value)){
+					alert('OK!')
+				}
+				else if(err_reg_1.test(value)){
+					alert('位数太短，请重新输入！')
+				}
+				else if(err_reg_2.test(value)){
+					alert('首位不能是数字！')
+				}
+				else if(err_reg_3.test(value)){
+					alert('未输入文字！')
+				}
+				else{
+					alert('包含非法字符，请重新输入！');
+				}
+			}
+			//顺手做了个错误检测
+			
+			
+			oInput1.onchange = function(){
+				var value = this.value;
+				var reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,15}$/;
+				//var reg = /\D\w{5,14}$/;
+				if(reg.test(value)){
+					alert('OK!')
+				}else{
+					alert('ERROR!')
+				}
+			}
+		
+		}
+	
+	</script>
+	<body>
+		<div id="outer">
+		<div id="inner">
+		用户名：<input type="text"  id="username" placeholder="请输入用户名" />（数字，字母，下划线组成的6-15位字符，不能以数字开头）
+		</div>
+		
+		<div id="inner2">
+			用户名：<input type="text"  id="username1" placeholder="请输入用户名" />（数字，字母组成的6-15位字符，大写、小写和数字至少包含一位）
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript" src="./JavaScript/elementByClassName.js"></script>
+	<script type="text/javascript">
+		function $(vArg,currentNode){
+			//区分传入的参数
+			switch(vArg[0]){//取第一个字符，由于#id，.class，tagname和name的首字符均不同，以此区分
+				case'#': //id
+					return document.getElementById(vArg.substring(1));
+					break;
+				case '.' :
+					return elementByClassName(currentNode,vArg.substring(1));
+					break;
+				default:
+				//对参数的前五个字符进行判
+				var str = vArg.substring(0,5);
+				if (str == 'name'){
+					return document.getElementsByName(vArg.substring(5));
+				}else{
+					return currentNode.getElementsByTagName(vArg);
+				}
+				break;
+			}
+		}
+	</script>
+	<body>
+		<ul>
+			<li> id document.getElementById()</li>
+			<li>tagName node.getElementsByTagName()</li>
+			<li>name document.getElementsByName()</li>
+			<li>className node.getElementsByClassName()</li>
+		</ul>
+		通过使用CSS选择器，封装一个可以获取上述四种元素节点功能的函数
+		<br>
+		
+		
+	</body>
+</html>
+ 

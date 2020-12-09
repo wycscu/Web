@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			text-align: center;
+			height: 300px;
+			line-height: 300px;
+		}
+		tr td{
+			text-align: center;
+		}
+		table{
+			text-align: center;
+			margin: 0 auto;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+		var Odiv = document.getElementById('box1');//返回nodeList
+		for(var i=0;i<Odiv.childNodes.length;i++){ //7个子节点
+			//alert(Odiv.childNodes[i].nodeName)
+			//alert(Odiv.childNodes[i].nodeType)
+			//alert(Odiv.childNodes[i].nodeValue)
+		}
+			
+		}
+		
+	</script>
+	<body>
+		节点有三种，而它们有三个属性：<br>
+		<table border="1px" cellspacing="0px" cellpadding="5px" >
+			
+			<tr>
+			<td>节点类型</td>
+			<td>nodeName</td>
+			<td>nodeType</td>
+			<td>nodeValue</td>
+			</tr>
+			<tr>
+			<td>元素</td>
+			<td>元素名称</td>
+			<td>1</td>
+			<td>null</td>
+			</tr>
+			<tr>
+			<td>属性</td>
+			<td>属性名称</td>
+			<td>2</td>
+			<td>属性值</td>
+			</tr>
+			<tr>
+			<td>文本</td>
+			<td>#text</td>
+			<td>3</td>
+			<td>文本内容（不包括html）</td>
+			</tr>
+		</table>
+		<ol>
+			<li>childNodes 获取当前元素节点的所有子节点</li>
+			注意：这里的子节点只包括文本节点和元素节点，不包含属性节点
+			<br>childNodes是有缺陷的，它只能获取到子级节点，无法获取到子级的子级，如该案例中左div的b标签，中div的em标签都没有能作为子节点获取到
+			<li>firstChild 快速找到当前元素子节点的第一个</li>
+			<li>lastChild 快速找到元素节点的子节点的末尾</li>
+		</ol>
+		
+		<div id="box1" style="display: flex; width: 100%;">
+			<b>nodetest</b>
+			<div id="left"  style="width: 20%; background-color: #eee;">
+				<b>L</b>
+			</div>
+			<div id="middle" style="width: 60%; background-color: #999;">
+				<em>M</em>
+			</div>
+			<div id="right" style="width: 20%; background-color: #eee;">
+				<span>R</span>
+			</div>
+		</div>
+	</body>
+</html>

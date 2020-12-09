@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			Odiv = document.getElementById('box1');
+			Odiv2 = document.getElementsByClassName('box1');
+	//	if(Odiv.nodeType == 1){}
+		if(	Odiv2[0].nodeType ==1){
+			alert('node is an element');
+		}else{
+			alert('no')
+		}
+		}
+	</script>
+	<body>
+		<div  id="box1">123</div>
+		<div  class="box1">123</div>
+	</body>
+</html>

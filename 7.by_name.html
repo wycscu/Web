@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			Nodes = document.getElementsByName('box1');
+			alert(Nodes) //nodeLists
+			alert(Nodes.length)
+		}
+	</script>
+	<body>
+		document.getElementByName()
+		<br>参数:name的值
+		<br>返回值:装有符合条件的元素节点的数组
+		不可以从某一个节点找，比如先get div的id，再用这个节点去查找name <br>
+		一般只有文本输入框的元素节点才有name属性。
+		<br>
+		
+		<br>
+		<div name="box1" id="div1"></div>
+		<span name='box1'></span>
+		<input type="text" name="box1"/>
+	</body>
+</html>

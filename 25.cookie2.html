@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript" src="JavaScript/setCookie.js"></script>
+	<script type="text/javascript" src="JavaScript/getCookie.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var usr = document.getElementById('user');
+			var psd = document.getElementById('psd')
+			var	oCheck = document.getElementById('rem');
+			var oCfm = document.getElementById('cfm');
+			
+			if(getCookie('username')){
+				usr.value = getCookie('username')
+				psd.value = getCookie('password')
+			}
+			
+			oCfm.onclick = function(){
+				//alert('activated')
+				var username = usr.value;
+				var password = psd.value;
+				var remember = oCheck.value;
+				if(oCheck.checked){
+					setCookie('usr1',username,7);
+					setCookie('password',password,7);
+				}
+			}
+		}
+	</script>
+	<body>
+		用户名：<input type="text" id="user"/> <br>
+		
+		密 &nbsp;&nbsp;码：<input type="password" id="psd"/><br>
+		<label><input type="checkbox" id="rem"/>七天免登录</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" id='cfm' value="login"/>
+	</body>
+</html>

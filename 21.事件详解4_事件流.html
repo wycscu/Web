@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#outer{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+		
+		#inner{
+			width: 100px;
+			height: 100px;
+			background-color:blue;
+		}
+		
+		li{
+			width: 200px;
+			margin: 10px;
+			background-color: #ccc;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var outer = document.getElementById('outer');
+			var inner = document.getElementById('inner');
+			outer.onclick = function(){
+				console.log('outer');
+			}
+			inner.onclick = function(e){
+				var evt = e||event;
+				console.log('inner');
+				//阻止冒泡
+				evt.cancelBubble = true; //适用chrome，ie等新浏览器
+				//evt.stopPropagation(); //针对chrome等浏览器，ie不支持
+			}
+			
+			var Oul = document.getElementsByTagName('ul')[0];
+			var aLi = document.getElementsByTagName('li');
+			// for(var i=0 ; i<aLi.length ; i++){
+			// 	aLi[i].onclick = function(){
+			// 		console.log(this.innerHTML);
+			// 	}
+			// }
+			//上述写法将无法对新增的li赋予onclick事件
+			
+			//事件委托
+			Oul.onclick = function(e){
+				var evt = e||event;
+				var _target = evt.target||evt.srcElement;
+				
+				if(_target.nodeName.toUpperCase() == 'LI'){
+					console.log(_target.innerHTML);
+				}
+			}
+			
+			
+			for(var i = 0; i < 5; i++){
+				var oLi = document.createElement('li')
+				oLi.innerHTML = i;
+				Oul.appendChild(oLi);
+			}
+		}
+		
+	</script>
+	<body>
+		<h2>事件流描述的是页面接收事件的顺序</h2>
+	<br>
+		 	事件流的的三个阶段：捕获，目标，冒泡
+			<br>
+			
+			捕获和冒泡的方向相反
+			<br><br>
+			
+	
+		 
+		 <br><br><br><br>
+		 <div id="outer">
+		 	<div id="inner">
+		 		
+		 	</div>
+		 </div>
+		 <br>
+		 默认冒泡，由最特定的目标到最不特定的目标，子类发生事件，会层级式地向上传递，触发父级的相应事件，层层向上直到终端，本案例中，即先输出inner，再输出outer
+		<br>
+		阻止冒泡：在子类加cancelBubble或stopPropagation()
+		<br><br>
+		事件委托：通过冒泡，把本应添加给某元素上的事件委托给父级
+		<br><br><br>
+		例子： <br>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<br>
+		该案例中如果直接给li标签添加onclick事件，新生成的li无法log innerHTML。因此将事件委托给父级。
+		<br>
+		委托时注意nodeName需要转成大写；并且只给li添加，点击空白处ul不输出。
+	</body>
+</html>

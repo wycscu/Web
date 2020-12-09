@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		ul li{
+			font-size: 1.3em;
+		}
+		#box1{
+			margin:0 auto;
+			text-align: center;
+			background-color: aqua;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var Odiv = document.getElementById('box1');
+			// Odiv.name = 'HELLOWORLD'
+			Odiv.setAttribute('name','helloworld'); //将name属性修改掉
+			alert(Odiv.getAttribute('name'))
+		//	Odiv.removeAttribute('class'); 
+			alert(Odiv.className)  //注意这里的属性是className
+			// Odiv.xxx = yyy;   //无效
+			Odiv.setAttribute('xxx','yyy');
+			//alert(Odiv.xxx) //undefined
+			alert(Odiv.getAttribute('xxx'));
+			}
+			
+	</script>
+	<body>
+	<span style="font-size: 3em; color: #999; text-align: center; display: block;">补充知识：</span>	
+		<br>
+		<div style="display: flex;">
+			
+		<div style="width: 50%;">
+			<ul>
+				<span style="font-size: 2em;color: red;">IE6-8</span>
+				<li>firstChild 第一个节点</li>
+				<li>lastChild 最后一个节点</li>
+				<li>nextSibling 下一个同级节点</li>
+				<li>previousSibling 上一个同级节点</li>
+			</ul>
+		</div>
+		
+		<div style="width: 50%;">
+			<ul>
+				<span style="font-size: 2em;color: red;">chrome/firefox</span>
+				<li>firstElementChild 第一个节点</li>
+				<li>lastElementChild 最后一个节点</li>
+				<li>nextElementSibling 下一个同级节点</li>
+				<li>previousElementSibling 上一个同级节点</li>
+			</ul>
+		</div>
+		</div>
+
+		set/get.removeAttribute()方法 <br>
+		将获取/设置/删除元素中某个属性的值。
+		<br>
+		上述两种方式的区别：
+		<ol>
+			<li>class属性范围区别，点操作是className,而set/getAttribute是通过class，即Odiv.className赋值和Odiv.setAttribute('class','attribute')的区别</li>
+			<li>设置用户自定义属性</li>
+			如果直接设置Odiv.xxx=yyy是没有效果的，但如果Odiv.setAttribute('xxx','yyy')会生效,并且这种方式设置的属性也只能靠getAttribute获取
+		</ol>
+		<div id="box1" title="div1" name='hello' class="world">测试用div <br>默认值：id="box1" title="div1" name='hello' class="world"</div>
+	</body>
+</html>
