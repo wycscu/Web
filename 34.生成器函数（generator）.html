@@ -82,7 +82,31 @@
 		wrapped().next('1');
 		
 
+
+
+console.log('---------------------------')
+		//-----------------------------------------------------------------------------
 		
+		
+		//斐波那契数列
+		function* Feibo(n){
+			let a = 0;
+			let b = 1;
+			console.log(a);
+			console.log(b);
+			for(let i =0;i<n;i++){
+				// yield a;   //第一项开始
+				let temp = a+b;
+				a = b;
+				b = temp;
+				console.log(temp); //第三项开始
+			}
+			
+		}
+		var f = Feibo(10);
+		for(let i of f){
+			console.log(i);
+		}
 		
 
 	</script>
