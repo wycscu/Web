@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		li{
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		function* foo(x){
+			yield x+1;
+			yield x+2;
+			return x+3;
+		}
+		
+		var f = foo(1)
+		console.log(f.next()); // {value: 2, done: false}
+		console.log(f.next()); //{value: 3, done: false}
+		console.log(f.next()); //{value: 4, done: true}
+		
+		console.log('---------------------------')
+		//------------------------------------------------------------------------
+		
+		
+		
+		
+		
+		
+		function*  foo1(x){
+			var y = 2*(yield(x+1));
+			var z = yield(y/3);
+			return(x+y+z);
+		}
+		var f1 = foo1(5);
+		console.log(f1.next()); //---{value:6,done:false}
+		console.log(f1.next(12)); //---{value:8,done:false}
+		console.log(f1.next(13)); //---{value:42,done:true}
+		
+		
+		//第一次next()，x=5，那么yield(x+1)=6
+
+		//第二次next(12)，令yield(x+1)=12，那么y=24,输出yield(y/3)=8
+
+		//第三次next(13)，令yield(y/3)=13，前面yield(x+1)=12，那么最终z=13，y=24，x=5，return (x+y+z)=42
+		
+		
+		
+		
+		console.log('---------------------------')
+		//-----------------------------------------------------------------------------
+		let a =function*(){
+		    yield 3;
+		    yield 4;
+		    yield 5;
+		    return 6;
+		};
+		console.log([...a()]);     //(3) [3, 4, 5]
+		
+		console.log('---------------------------')
+		//-----------------------------------------------------------------------------
+		
+		
+		
+		
+		function wrapper(genfunc) {
+		  return function (...args) { //构造函数
+		    let genObj = genfunc(...args);  //genObj返回生成器函数参数Iterator
+		    genObj.next();  //执行一次后取到第一个值
+		    return genObj;
+		  };
+		}
+		 
+		const wrapped = wrapper(function*() {
+		  console.log(`First input: ${yield}`);
+		  return 'DONE';
+		});
+		 
+		wrapped().next('1');
+		
+
+
+
+console.log('---------------------------')
+		//-----------------------------------------------------------------------------
+		
+		
+		//斐波那契数列
+		function* Feibo(n){
+			let a = 0;
+			let b = 1;
+			console.log(a);
+			console.log(b);
+			for(let i =0;i<n;i++){
+				// yield a;   //第一项开始
+				let temp = a+b;
+				a = b;
+				b = temp;
+				console.log(temp); //第三项开始
+			}
+			
+		}
+		var f = Feibo(10);
+		for(let i of f){
+			console.log(i);
+		}
+		
+
+	</script>
+	<body>
+		<ul>
+			<li>yield是ES6的新关键字，使生成器函数执行暂停，yield关键字后面的表达式的值返回给生成器的调用者。它可以被认为是一个基于生成器的版本的return关键字。</li>
+			<li>yield关键字实际返回一个IteratorResult（迭代器）对象，它有两个属性，value和done，分别代表返回值和是否完成。</li>
+			<li>yield无法单独工作，需要配合generator(生成器)的其他函数，如next，懒汉式操作，展现强大的主动控制特性。</li>
+		</ul>
+		
+		next的使用：
+		<br>next()内的参数可理解为向generator函数里注入值，参数会被当作上一个二yield表达式的值。 <br>
+		只有使用了next，生成器函数内部的语句才会执行一次。<br>
+		如果想要第一次调用next方法时，就能够输入值，可以在 Generator 函数外面再包一层。
+		
+	</body>
+</html>
