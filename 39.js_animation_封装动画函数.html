@@ -16,13 +16,25 @@
 			left: 0;
 			top: 0;
 			position: absolute;
+			opacity: 1;
+			line-height: 100px;
+			text-align: center;
 		}
 	</style>
 	<script type="text/javascript" src="js/animation.js"></script>
 	<script type="text/javascript">
 		window.onload = function(){
 			var Odiv = document.querySelector('div');
-			animate(Odiv,'left',900);
+			// animate(Odiv,'left',900);
+			// animate(Odiv,'opacity',50); //自动取消上一个动画的效果
+			animate(Odiv,{
+				width:200,
+				height:200,
+				opacity:50,
+				left:500,
+			})
+			//设置多个动画效果
+			//opacity：0-100，值越大透明度越高
 		}
 		
 	</script>
