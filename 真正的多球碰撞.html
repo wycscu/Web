@@ -61,7 +61,7 @@
     var balls = [];
     //生成小球函数
     function createBalls() {
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < randomNum(0,50); i++) {
         var ball = document.createElement("p");
         //随机小球起始的X坐标和小球的Y坐标
         ball.x = randomNum(0, 1200);

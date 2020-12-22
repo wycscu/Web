@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Emmet</title>
+	</head>
+	<style type="text/css">
+		*{
+			font-family: "microsoft yahei";
+			font-size: x-large;
+		}
+	</style>
+	<body>
+		emmet（前身zen coding）提供了一套简洁的语法规则，可以提高代码编写效率。 <br>
+		使用规则： <br>
+		<ol>
+			<li>新建html文档：！或html:5 + tab</li>
+			<li>生成后代元素： >  eg. nav>ul>li</li>
+			<li>生成兄弟元素： +  eg. div+div+p</li>
+			<li>生成上级元素+  ^  eg. div+div>p>span+em^^bq</li>
+			^表示^后面的元素与^前面的元素的父元素是平级，即兄弟元素。一个^表示提升一个层级，两个提升两级
+			<li>生成类名：Emmet 默认的标签为 div ，如果我们不给出标签名称的话，默认就生成 div 标签。Emmet会根据父标签进行判定。比如在ul中输入.item，就会生成li class="item"></li>
+			<li>生成id： #  eg. #div</li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+	</body>
+</html>
