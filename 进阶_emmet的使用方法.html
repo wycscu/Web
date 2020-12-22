@@ -9,6 +9,19 @@
 			font-family: "microsoft yahei";
 			font-size: x-large;
 		}
+		ul li{
+			list-style:disc;
+			margin: 10px;
+		}
+		li{
+			margin: 10px;
+		}
+		hr{
+			width: 100%;
+			height: 3px;
+			margin: 10px auto;
+			background-image: linear-gradient(to right,rgba(0,0,0,0),rgba(0,0,0,.75),rgba(0,0,0,0));
+		}
 	</style>
 	<body>
 		emmet（前身zen coding）提供了一套简洁的语法规则，可以提高代码编写效率。 <br>
@@ -19,11 +32,41 @@
 			<li>生成兄弟元素： +  eg. div+div+p</li>
 			<li>生成上级元素+  ^  eg. div+div>p>span+em^^bq</li>
 			^表示^后面的元素与^前面的元素的父元素是平级，即兄弟元素。一个^表示提升一个层级，两个提升两级
-			<li>生成类名：Emmet 默认的标签为 div ，如果我们不给出标签名称的话，默认就生成 div 标签。Emmet会根据父标签进行判定。比如在ul中输入.item，就会生成li class="item"></li>
+			<li>生成类名：Emmet 默认的标签为 div ，如果我们不给出标签名称的话，默认就生成 div 标签。</li>
+			Emmet会根据父标签进行判定。<br>
+			<h2>隐式标签</h2>
+			<ul>
+				<li>li：用于ul和ol中</li>
+				<li>tr：用于table、tbody、thead和tfoot中</li>
+				<li>td：用于tr中</li>
+				<li>option：用于select和optgroup中</li>
+			</ul>
 			<li>生成id： #  eg. #div</li>
-			<li></li>
-			<li></li>
-			<li></li>
+			<li>重复： *  eg. div*5 代表重复生成5个div</li>
+			<li>分组： () eg。. div>(ul>li>a)+div>p 如果不加()的话，div会成为a标签的兄弟元素，而加了之后代表嵌套的关系，即第二个div会和第一个div呈现兄弟关系</li>
+			<li>属性：[attr]:  </li>
+			<ul>
+				<li>属性指令：[]   eg. a[href='www.baidu.com' ]{}</li>
+				<li>编号指令： $  eg. ul>li.test$*3  回生成class为test1，test2,test3的三个li标签</li>
+				若是不从1开始编号，需要利用$@num*num。&nbsp;&nbsp;&nbsp;eg:ul>li.test$@3*3
+			</ul>
+			<li>文本:{}  &nbsp;&nbsp;&nbsp; eg. ul>li.test${测试$}*3>
 		</ol>
+		
+		<hr >
+
+		
+		<h2>常用简写</h2>
+		<ul>
+			<li>bq>a[href='www.baidu.com']{baidu}*4</li>
+			<li>w100p+h100p+m10p </li>
+			<li>ul>li.test${测试$}*3</li>
+			<li>m10-auto(CSS)</li>
+			<li></li>
+			<li></li>
+		</ul>
+		
+
 	</body>
 </html>
+	
