@@ -24,7 +24,7 @@ function animate(el,properties){
 				current = parseInt(getStyle(el,property));
 				
 			}
-			var speed = (target - current)/30;  //处理取整问题
+			var speed = (target - current)/50;  //处理取整问题
 			speed = speed>0?Math.ceil(speed):Math.floor(speed);
 			//为了防止speed叠加，需要清除之前的setInterval函数
 			if(property==='opacity'){

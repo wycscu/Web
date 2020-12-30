@@ -17,6 +17,7 @@
 			height: 1440px;
 			border:5px solid crimson;
 			position: relative;
+			margin: 0 auto;
 		}
 		.slider .list .item{
 			position: absolute;
@@ -41,23 +42,174 @@
 		
 		.slider .next{
 			right: 0;
+			transform: rotate(180deg);
 		}
+		
+		.slider .stop{
+			position: absolute;
+			right:100px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+		}
+		
+		.slider .start{
+			position: absolute;
+			right:150px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+		}
+		
+		.slider .pagination{
+			position: relative;
+			left:1050px ;
+			
+			top: 1300px;
+		}
+		
+		.slider .pagination .bullet{
+			width: 100px;height: 61.8px;
+			background-color: aqua;
+			text-align: center;
+			margin-left: 5px;
+			float: left;
+			
+			cursor: pointer;
+			line-height: 61.8px;
+			opacity: 0.5;
+			font-size: -webkit-xxx-large;
+			color: aqua;
+		}
+		
+		.slider .pagination .bullet.focus{
+			background: none;
+		}
+		button{
+			opacity: 0.8;
+			width: 100px;
+			height: 200px;
+			line-height: 100px;
+			background-color: gray;
+		}
+		
 	</style>
+	<link rel="stylesheet" href="font_2301377_47mg26m2g3x/iconfont.css">
+	<script src="js/animation.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+		window.onload = function(){
+			(function (){
+				var prevIndex,nextIndex;
+				var len;
+				var id;
+				
+				init();
+				
+				
+				function init(){//初始化
+					prevIndex = nextIndex = 0;
+					len = document.querySelectorAll('.list .item').length;
+					
+					document.querySelector('.prev').onclick = function(){
+						slidePrev();
+					}
+					
+					document.querySelector('.next').onclick = function(){
+						slideNext();
+					}
+					var bullets = document.querySelectorAll('.slider .pagination .bullet');
+					for(var i = 0; i<bullets.length; i++){
+						bullets[i].index = i;
+						bullets[i].onclick = function(){
+							prevIndex = nextIndex;
+							nextIndex = this.index;
+							slideTo(prevIndex,nextIndex);
+						}
+					}
+					auto();
+					document.querySelector('.slider .start').onclick = function(){
+						auto();
+					}
+					document.querySelector('.slider .stop').onclick = function(){
+						stop();
+					}
+					
+					var slider = document.querySelector('.slider');
+					slider.onmouseover = function(){
+						stop();
+					}
+					slider.onmouseout = function(){
+						auto();
+					}
+				}
+				
+				function slidePrev(){//前一张
+					prevIndex = nextIndex;
+					nextIndex--;
+					if(nextIndex ===-1){ //最前面一张，回到最后一张
+						nextIndex = len -1;
+					}
+					
+					slideTo(prevIndex,nextIndex);
+				}
+				
+				function slideNext(){//后一张
+					prevIndex = nextIndex;
+					nextIndex++;
+					if(nextIndex ===len){//最后一张，回到第一张
+						nextIndex = 0;
+					}
+					
+					slideTo(prevIndex,nextIndex);
+				}
+				
+				function slideTo(prev,next){ //切换时的动画效果，以及标签的转换
+					var lis = document.querySelectorAll('.list .item');
+					var bullets = document.querySelectorAll('.slider .pagination .bullet');
+					
+					bullets[prev].className = 'bullet';
+					bullets[next].className = 'bullet focus';
+					animate(lis[prev],{opacity:0});
+					animate(lis[next],{opacity:100});
+				}
+			
+				function auto(){
+					clearInterval(id);
+					id = setInterval(function(){
+						slideNext();
+					},3000)
+				}
+				
+				function stop(){
+					clearInterval(id);
+				}
+					
+			})()
+		}
 		
 	</script>
 	<body>
 		<div class="slider">
 			<ul class="list">
-				<li class="item"><img src="./imgs/img(1).jpg" alt=""></li>
+				<li class="item"><img src="./imgs/img(5).jpg" alt=""></li>
 				<li class="item"><img src="./imgs/img(2).jpg" alt=""></li>
 				<li class="item"><img src="./imgs/img(3).jpg" alt=""></li>
 				<li class="item"><img src="./imgs/img(4).jpg" alt=""></li>
+				<li class="item"><img src="./imgs/img(6).jpg" alt=""></li>
 			</ul>
-			<button class="prev">prev</button>
-			<button class="next">next</button>
+			<button class="prev"><i class ='iconfont'>&#xe6db;</i></button>
+			<button class="next"><i class ='iconfont'>&#xe6db;</i></button>
+			<ul class="pagination">
+				<li class="bullet focus">1</li>
+				<li class="bullet">2</li>
+				<li class="bullet">3</li>
+				<li class="bullet">4</li>
+				<li class="bullet">5</li>
+			</ul>
+			<button class="stop">||</button>
+			<button class="start">></button>
 		</div>
-		
+	
 		
 		
 	</body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		ol li{
+			font-size: x-large;
+		}
+	</style>
+	   <script>
+	        //1.函数声明，不会执行。
+	        function a() {
+	            alert("函数a");
+	        }
+	
+	        //2.函数表达式，立即执行该函数，必须使用一个变量接收返回值，否则报错。
+	        var res = function b() {
+	            alert("函数b");;
+	        }();
+	
+	        //3.函数表达式，立即执行该函数，不必须使用变量接收。
+	        (function c() {
+	            alert("函数c")
+	        })();
+			
+			//a();
+	    </script>
+	<body>
+		<ol>
+			<li>function a(){}（函数声明）返回undefined（不会执行），仅仅是函数声明（声明提前）</li>
+			<li>var res = function a(){}() （函数表达式），立即执行该函数，必须使用一个变量接收返回值，否则报错。</li>
+			<li>(function a(){})() （函数表达式）,立即执行该函数，不必须使用变量接收。</li>
+		</ol>
+
+	</body>
+</html>
