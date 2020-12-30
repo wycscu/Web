@@ -1,0 +1,168 @@
+@font-face {font-family: "appicon";
+  src: url('font-app.eot?t=1593660452467'); /* IE9 */
+  src: url('font-app.eot?t=1593660452467#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('font-app.woff?t=1593660452467') format('woff'),
+  url('font-app.ttf?t=1593660452467') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('font-app.svg?t=1593660452467#appicon') format('svg'); /* iOS 4.1- */
+}
+
+.appicon {
+  font-family: "appicon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.appicon-vip:before {
+  content: "\e716";
+}
+
+.appicon-group:before {
+  content: "\e717";
+}
+
+.appicon-alert:before {
+  content: "\e718";
+}
+
+.appicon-map:before {
+  content: "\e719";
+}
+
+.appicon-form:before {
+  content: "\e71a";
+}
+
+.appicon-channel:before {
+  content: "\e71c";
+}
+
+.appicon-revenue:before {
+  content: "\e710";
+}
+
+.appicon-finance_a:before {
+  content: "\e711";
+}
+
+.appicon-finance_b:before {
+  content: "\e712";
+}
+
+.appicon-completion:before {
+  content: "\e713";
+}
+
+.appicon-progress:before {
+  content: "\e714";
+}
+
+.appicon-target:before {
+  content: "\e715";
+}
+
+.appicon-shopping_cart:before {
+  content: "\e704";
+}
+
+.appicon-goods:before {
+  content: "\e705";
+}
+
+.appicon-headquarter:before {
+  content: "\e706";
+}
+
+.appicon-shop:before {
+  content: "\e707";
+}
+
+.appicon-transport:before {
+  content: "\e708";
+}
+
+.appicon-inventory:before {
+  content: "\e709";
+}
+
+.appicon-doc_a:before {
+  content: "\e6fe";
+}
+
+.appicon-doc_b:before {
+  content: "\e6ff";
+}
+
+.appicon-doc_c:before {
+  content: "\e700";
+}
+
+.appicon-doc_d:before {
+  content: "\e701";
+}
+
+.appicon-doc_e:before {
+  content: "\e702";
+}
+
+.appicon-doc_f:before {
+  content: "\e703";
+}
+
+.appicon-analysis_d:before {
+  content: "\e6fb";
+}
+
+.appicon-analysis_e:before {
+  content: "\e6fc";
+}
+
+.appicon-analysis_f:before {
+  content: "\e6fd";
+}
+
+.appicon-anlysis_a:before {
+  content: "\e6f8";
+}
+
+.appicon-analysis_b:before {
+  content: "\e6f9";
+}
+
+.appicon-analysis_c:before {
+  content: "\e6fa";
+}
+
+.appicon-bar_d_chart:before {
+  content: "\e6f7";
+}
+
+.appicon-line_chart:before {
+  content: "\e6f6";
+}
+
+.appicon-pie_chart:before {
+  content: "\e6f1";
+}
+
+.appicon-bar_chart:before {
+  content: "\e6f2";
+}
+
+.appicon-gauge:before {
+  content: "\e6f3";
+}
+
+.appicon-combo_chart:before {
+  content: "\e6f0";
+}
+
+.appicon-more:before {
+  content: "\e6ef";
+}
+
+.appicon-defaut_image:before {
+  content: "\e6ec";
+}
+
