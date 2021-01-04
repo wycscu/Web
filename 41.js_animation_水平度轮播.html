@@ -102,10 +102,30 @@
 					len = lis.length;
 					
 					list.style.width = liwidth * len + 'px';
+					
+					document.querySelector('.prev').onclick = function(){
+						slidePrev();
+					}
+					
+					document.querySelector('.next')
 				}
-				function slideNext(){}
-				function slidePrev(){}
-				function slideTo(){}
+				
+				
+				function slideNext(){
+					currentIndex++;
+					slideTo(currentIndex);
+				}
+				
+				
+				function slidePrev(){
+					currentIndex++;
+					slideTo(currentIndex);
+				}
+				
+				
+				function slideTo(index){
+					var list = document.querySelector('.slider .list');
+				}
 				function auto(){}
 				function stop(){}
 					
