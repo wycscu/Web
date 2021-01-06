@@ -19,7 +19,7 @@
 			width: 1280px;
 			height: 720px;
 			position: relative;
-			/* overflow: hidden; *//* 调试用 */
+			overflow: hidden;  /* 调试用 */
 			
 		}
 		
@@ -81,6 +81,7 @@
 				var lis;
 				var liwidth;
 				var len;
+				var id;
 				
 				init();
 				
@@ -102,12 +103,32 @@
 					len = lis.length;
 					
 					list.style.width = liwidth * len + 'px';
-					
+					list.style.left = -liwidth + 'px';
 					document.querySelector('.prev').onclick = function(){
 						slidePrev();
 					}
 					
-					document.querySelector('.next')
+					document.querySelector('.next').onclick = function(){
+						slideNext();
+					}
+					
+					var bullets = document.querySelectorAll('.slider .pagination .bullet');
+					for(var i = 0; i < bullets.length; i++){
+						bullets[i].index = i;
+						bullets[i].onclick = function(){
+							currentIndex = this.index + 1;  //索引不是一一对应
+							slideTo(currentIndex);
+						}
+						
+					}
+					
+					document.querySelector('.slider').onmouseover = function(){
+						stop();
+					} //自动停播
+					
+					document.querySelector('.slider').onmouseout = function(){
+						auto();
+					}
 				}
 				
 				
@@ -118,16 +139,48 @@
 				
 				
 				function slidePrev(){
-					currentIndex++;
+					currentIndex--;
 					slideTo(currentIndex);
 				}
 				
 				
 				function slideTo(index){
 					var list = document.querySelector('.slider .list');
+					if(index === len){ //最右边继续next
+						currentIndex = index = 2; //从右0瞬移到左0，滑到1（index=2）
+						list.style.left = -liwidth + 'px';  //定位到最左
+					}
+					if(index === -1){ //最左边prev
+						currentIndex = index = len - 3;  //从左3瞬移到右3，滑倒2（index=len-3)
+						list.style.left = -(len-2)*liwidth + 'px'; //定位到
+					}
+					
+					var focusIndex;  //焦点事件
+					var bullets = document.querySelectorAll('.pagination .bullet');
+					if(index ===0){  //左三其实就是右三
+						focusIndex = bullets.length - 1;
+					}else if(index === len - 1){ //右0其实就是左0
+						focusIndex = 0;
+					}else{
+						focusIndex = index - 1;
+					}
+					
+					document.querySelector('.focus').className = 'bullet';
+					bullets[focusIndex].className = 'bullet focus';
+					var left = -index * liwidth; //初始化，一开始为第一张图片
+					animate(list,{
+						left:left
+					})
 				}
-				function auto(){}
-				function stop(){}
+				function auto(){
+					clearInterval(id);
+					id = setInterval(function(){
+						slideNext();
+					},2000);
+				}
+				function stop(){
+					clearInterval(id);
+				}
 					
 			})()
 		}
