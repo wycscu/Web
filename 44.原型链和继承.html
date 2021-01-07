@@ -4,6 +4,30 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<script type="text/javascript">
+		function Person(){
+			Person.prototype.name = 'wyc';
+			Person.prototype.age = 22;
+			Person.prototype.sayHello = function(){
+				alert(this.name);
+			}
+		}
+		
+		var p = new Person();
+		//1.创建了一个对象
+		//2._proto_属性
+		//3.将this指向该对象
+		//4.执行构造函数
+		//5.返回该对象
+		p.sayHello();
+	</script>
 	<body>
+		<ol>
+			<li>原型prototype</li>
+			<li>基于原型的继承</li>
+			1.Object.create() <br>
+			2.原型继承图示
+			<li>原型链</li>
+		</ol>
 	</body>
 </html>
