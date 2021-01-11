@@ -1,0 +1,2 @@
+this is a test file.
+if you see this content,congratulations!the ajax get request runs sucessfully.

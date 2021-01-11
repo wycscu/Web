@@ -22,7 +22,8 @@
 			alert(this.name);
 		}
 		
-		var p = new Person();
+		//var p = new Person();
+		
 		//1.创建了一个对象
 		//2._proto_属性
 		//3.将this指向该对象
@@ -36,6 +37,15 @@
 		//当访问一个对象的属性的时候，首先在这个对象的本身进行查找
 		//找到直接返回这个属性且停止查找。
 		//如果没有找到，继续在原型上查找。即_proto_指向的对象
+		
+		function Student_1(){
+			
+		}
+		
+		//Student_1.prototype = Object.create(Person.prototype);  //s.sayHello is not a function
+		Student_1.prototype = Object.create(Student.prototype);
+		var s = new Student_1();
+		s.sayHello();
 	</script>
 	<body>
 		<ol>
@@ -53,6 +63,10 @@
 		那么假如我们让原型对象等于另一个类型的实例，结果会怎样？
 		显然，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函数的指针。
 		假如另一个原型又是另一个类型的实例，那么上述关系依然成立。
-		如此层层递进，就构成了实例与原型的链条。这就是所谓的原型链的基本概念
+		如此层层递进，就构成了实例与原型的链条。这就是所谓的原型链的基本概念 <br>
+		<br>
+		<br>
+		<h2><a href="45.混合继承.html"></a>混合继承</h2>
+		
 	</body>
 </html>

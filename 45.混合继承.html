@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.sayHello = function(){
+			alert(this.name);
+		}
+		
+		
+		
+		function Student(name,age,id){
+			Person.apply(this,[name,age]); //继承属性
+			this.id = id;
+		} 
+	
+		Student.prototype = Object.create(Person.prototype); //继承方法
+		var s = new Student('wyc',22,58022);
+		s.sayHello();
+		Student.prototype.study = function(){
+			alert(this.id + ' is studing!');
+		}
+		s.study(); //ok
+	</script>
+	<body>
+	</body>
+</html>
