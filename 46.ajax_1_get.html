@@ -23,16 +23,21 @@
 						if(xhr.readyState !== 4){
 							return;
 						}
-						
+						if(xhr.status >= 200 && xhr.status <=300){
+							document.querySelector('p').innerHTML = xhr.responseText;
+						}else{
+							console.log('request error！')
+						}
+					}
 					//2.打开这个对象
 					xhr.open('GET','test.txt',true); //true代表异步更新
 					//3.发送请求
 					xhr.send();
 				
-				}
+				
 					}
 			 
-			 loadXMLDoc();
+			 
 		</script>
 		<ul>
 			<li>Ajax:Asynchronous JavaScript and XML </li>
@@ -41,9 +46,22 @@
 			<li>核心方法：GET(数据存放在url中)；POST(数据存放在请求体中)</li>
 		</ul>
 		<button type="button" onclick="loadXMLDoc()">点击以触发事件</button>
+		<p></p>
 		
 		
-		
+		<br><br>
+		附加知识：<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">HTTP response status code</a>
+		<br>
+		<ol>
+			<li>Informational responses (100–199)</li>
+			<li>Successful responses (200–299)</li>
+			<li>Redirects (300–399)</li>
+			<li>Client errors (400–499)</li>
+			<li>Server errors (500–599)</li>
+		</ol>
+		部分参考状态码: <br>
+		<img src="imgs/http%20status%20code%201.png" > <br>
+		<img src="imgs/http%20status%20code%202.png" >
 		
 	</body>
 </html>
