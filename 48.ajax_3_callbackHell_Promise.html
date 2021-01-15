@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script>
+		// x = getData();
+		// y = getMoreData(x);
+		// z = getMoreData(y);
+		// //异步时可能出错
+		
+		// getData(function (x){
+		// 	getMoreData(x,function(y){
+		// 		getMoreData(y,function (z){
+		// 			//process z
+		// 		})
+		// 	})
+		// })
+		//解决了异步问题，但是嵌套过深，结构复杂
+		
+		//为解决该问题，引入promise
+		//通过promise构造函数来创建一个对象
+		//三种状态：pending fulfill reject
+		//pending==>fulfill  pending==>reject 确定后无法改变
+		var promise = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				var num = Math.floor(Math.random()*100);
+				if(num % 2 === 0){
+					resolve(num);
+				}else{
+					reject(num);
+				}
+			},1000);
+		});
+		
+		promise.then(function(num){
+			console.log('resolve: '+num);
+		}).catch(function(num){
+			console.log('reject: '+num)
+		})
+	</script>
+	<body>
+		<ol>
+			<li>回调地狱、promise</li>
+			<li>ajax的同源策略</li>
+		</ol>
+		回调地狱：异步过程中，需要将前一个参数嵌套进去保证顺序，但是会导致嵌套层数过深，结构复杂 <br>
+		
+		<br>
+		<a href="https://blog.csdn.net/weixin_37719279/article/details/80951280" target="_blank">then 和 catch 的用法</a>
+	</body>
+</html>
