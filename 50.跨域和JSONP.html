@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.li_1{
+			font-size: x-large;
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			function getData(data){
+				console.log(data);
+			}
+			var script = document.createElement('script');
+			script.id = 'jsonp';
+			script.src = 'js/jsonp.js';
+			document.body.appendChild(script);
+		}
+		
+	</script>
+	<body>
+		<h1>AJAX的同源策略</h1>
+		<ol>
+			<li class="li_1">什么是同源策略</li>
+			同源策略是一种安全协议，是客户端脚本中中重要的安全度量标准，
+			指一段脚本只能读取同一来源的窗口和文档的属性。 <br>
+			同源策略要求协议、域名、端口号一致，这三个东西指的是URL地址中的不同部分。 <br>
+			一个URL地址可以有以下几个组成部分：scheme://host:post/path?query#fragment <br>
+			<ol>
+				<li>scheme:通信协议，一般为http,https;</li>
+				<li>host:域名;</li>
+				<li>post:端口号，此项为可选项，http协议默认的端口号为80，https协议默认的端口号为443;</li>
+				<li>path:路径，由“/”隔开的字符串;</li>
+				<li>query:查询参数，此项为可选项;</li>
+				<li>fragment:信息片段，用于指定网络资源中的某片段，此项为可选项;</li>
+			</ol>
+			<li class="li_1">解决跨域问题</li>
+			<ol>
+				<li>JSONP</li>
+				<li>CORS</li>
+			</ol>
+		</ol>
+	</body>
+</html>
