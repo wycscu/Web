@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		p{
+			background-color: #cccccc;
+			text-align: center;
+		}
+	</style>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('p').click(function(){
+				$('p').html('我变！')
+			});
+		})
+		
+	</script>
+	
+	<body>
+		<p>点我试试！</p>
+		<input type="text">
+		<script type="text/javascript">
+			$('input').keyup(function(){
+			//	alert($(this).val());
+			var v = $(this).val();
+			if(v.slice(-2) !== 'px'){
+				$(this).val(v+'px');
+			}
+			})
+		</script>
+	</body>
+</html>

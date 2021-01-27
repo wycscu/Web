@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		li{
+			margin: 10px;
+		}
+		
+		span.input1 {
+			display: none;
+		}
+		span.input2{
+			font-size: xx-large;
+			color: red;
+			text-decoration: dashed;
+		}
+		
+		.box1{
+			border: 1px solid black;
+			width: 100px;
+			height: 100px;
+			overflow-x: scroll;
+			display: block;
+		}
+	</style>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<body>
+		点击标签试一试！！
+		<ul>
+			<li style="background-color: aqua;">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<script type="text/javascript">
+			$('li').html('li');
+			$(document).ready(function(){
+				$('li').click(function(){
+					$(this).hide();
+				})
+			})
+		</script>
+		<script>
+			$(document).ready(function(){
+				$('ul li:first').hover(
+					function(){
+						alert('enter!')
+					},
+					function(){
+						alert('leave!')
+					}
+				)
+			})
+		</script>
+		
+		<h2>1.文档就绪事件：</h2>jquery函数需要位于document ready函数中，
+		这是为了防止文档在完全加载（就绪）之前运行 jQuery 代码，
+		即在 <span style="text-decoration:underline; text-decoration-color:red ;">DOM</span> 加载完成后才可以对 DOM 进行操作。
+		如果在文档没有完全加载之前就运行函数，操作可能失败。
+		<br>
+		也可以采用简洁写法： <br><br>
+		$(function(){ <br> <br>	
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 开始写 jQuery 代码... <br> <br>	
+		}); <br>
+		
+		
+		
+		<h2>2.选择器使用方法</h2>
+		<img src="imgs/selector.png" >
+		<br>
+		
+		
+		
+		
+		<h2>3.jQuery事件</h2>
+		<ol>
+			<li>鼠标事件</li>
+			click:单击<br>
+			dbclick:双击<br>
+			mouseenter：指针穿过元素<br>
+			mouseleave：指针离开元素<br>
+			mousedown：当鼠标指针移动到元素上方，并按下鼠标按键时，会发生 mousedown 事件<br>
+			mouseup：当在元素上松开鼠标按钮时，会发生 mouseup 事件 <br>
+			hover：当鼠标移动到元素上时，会触发指定的第一个函数(mouseenter);当鼠标移出这个元素时，会触发指定的第二个函数(mouseleave)
+			
+			
+			
+			
+			
+			<li>键盘事件</li>
+			输入：<input type="text"  class='input_text'/>  按键次数：<span>0</span><br>
+			keydown - 键按下的过程<br>
+			keypress - 键被按下,类似keydown，但不会触发所有的键（比如 ALT、CTRL、SHIFT、ESC）<br>
+			keyup - 键被松开<br>
+			
+			<script type="text/javascript">
+				i = 0;
+				$(document).ready(function(){
+					$('input.input_text').keypress(function(){
+						$('span').text(i+=1);
+					});
+				});
+				
+			</script>
+			
+			
+			
+			<li>表单事件</li>
+			submit: <br>$("form").submit(function(){
+			alert("提交");
+			}); <br>
+			表单提交时触发 <br>
+			<br>
+			change： <br>
+			$("input").change(function(){
+			    alert("文本已被修改");
+			}); <br>
+			当用于 select 元素时，change 事件会在选择某个选项时发生。当用于 text field 或 text area 时，change 事件会在元素失去焦点时发生。 <br>
+			<br>
+				
+			focus: <br>
+			$("input").focus(function(){
+			    $("span").css("display","inline").fadeOut(2000);
+			});
+			<br>
+			当元素获得焦点时（当通过鼠标点击选中元素或通过 tab 键定位到元素时），发生 focus 事件。
+			focus() 方法触发 focus 事件，或规定当发生 focus 事件时运行的函数。 <br>
+			<br>
+			<input type="text" class="input1"/>
+			<span class="input1">请输入你的电话号码</span>
+			<p>点击输入框以获得焦点</p>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('input.input1').focus(function(){
+						$('span.input1').css('display','inline').fadeOut(2000);
+					})
+				})
+			</script>
+	<br>
+			blur:
+			<br>
+			$("input").blur(function(){
+			    alert("输入框失去了焦点");
+			});
+			<br>
+			
+			当元素失去焦点时发生 blur 事件。
+			blur() 方法触发 blur 事件，或规定当发生 blur 事件时运行的函数。
+		<br>
+		<li>文档/窗口事件</li>
+		resize: <br>
+		$(window).resize(function(){
+		    $('span').text(x+=1);
+		}); <br>
+		窗口大小发生改变时触发。 <br>
+		<p>窗口发生了<span class="input2">0</span>次大小改变。</p>
+		<script type="text/javascript">
+			i = 0;
+			$(document).ready(function(){
+				$(window).resize(function(){
+					$('span.input2').text(i+=1);
+				});
+			});
+		</script>
+		<br>
+		scroll :
+		$("div").scroll(function(){
+		    $("span").text(x+=1);
+		}); <br>
+		当用户滚动指定的元素时，会发生 scroll 事件。
+		
+		scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。
+		
+		scroll() 方法触发 scroll 事件，或规定当发生 scroll 事件时运行的函数。
+		<br><br>
+		<div class="box1">
+			用于 select 元素时，change 事件会在选择某个选项时发生。当用于 text field 或 text area 时，change 事件会在元素失去焦点时发生。
+用于 select 元素时，change 事件会在选择某个选项时发生。当用于 text field 或 text area 时，change 事件会在元素失去焦点时发生。
+用于 select 元素时，change 事件会在选择某个选项时发生。当用于 text field 或 text area 时，change 事件会在元素失去焦点时发生。
+
+		</div>
+		<p>窗口发生了<span class="input3">0</span>次滚动。</p>
+		
+		<script type="text/javascript">
+			i = 0;
+			$(document).ready(function(){
+				$('div.box1').scroll(function(){
+					$('span.input3').html(i++);
+				});
+			});
+		</script>
+		</ol>
+	</body>
+</html>

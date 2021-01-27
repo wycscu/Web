@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			width: 100px;height: 100px;
+			cursor: pointer;
+			line-height: 100px;
+			text-align: center;
+		}
+		.play{
+			background-color: green;
+		}
+		.pause{
+			background-color: gray;
+		}
+	</style>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('input[type=checkbox]').change(function(){
+				console.log('attr:' + $(this).attr('checked')); //checked：由于下方input设置了默认属性
+				console.log('prop:' + $(this).prop('checked')); //prop正常显示
+			});
+			
+			$('div').click(function(){
+				$(this).toggleClass('pause');
+				$(this).toggleClass('play');
+			})
+		})
+		
+	
+			
+	</script>
+	<body>
+		<h1>prop和attr</h1>
+		prop() <br>
+		方法操作radio（checkbox）之类的控件，让其选中的时候，其控件选中的值也会随之改变。即既可以控制其选中，也能控制其取消选中； <br>
+		类似于$("...").attr("checked");返回的是true或者false <br>
+		<hr >
+		attr() <br>
+		方法操作adio（checkbox）之类的控件，让其选中的时候，其控件选中的值不会随之改变。即只能控制其选中，不能控制其取消选中； <br>
+		类似于$("...").attr("checked");返回的是'checked'或者undefined <br>
+		
+		<br>
+		<strong>attr和prop的使用场景</strong> <br>
+		1.添加属性名称该属性就会生效应该使用prop(); <br>
+		2.是有true,false两个属性使用prop();（如'checked','selected','disabled'等） <br>
+		3.其他则使用attr(); <br>
+		<br><br>
+		<input type="text">
+		<label>选中<input type="checkbox" checked></label>
+		<br>checked:默认选中
+		<br>
+		在设置checkbox属性时，一定要使用prop，attr可能会出错。
+		<br>
+		<br>
+		<br>
+		<h1>class方法</h1>
+		<ul>
+			<li>addClass/removeClass：为元素添加/删除类</li>
+			<li>hasClass:判断元素是否含有此类 </li>
+			<li>toggleClass：该方法检查每个元素中指定的类。如果不存在则添加类，如果已设置则删除之。</li>
+		</ul>
+		
+		
+		
+		$(selector).toggleClass(classname,function(index,currentclass),switch)
+		<br>
+		规定返回需要添加/删除的一个或多个类名的函数。 <br>
+		function: <br>
+		index - 返回集合中元素的 index 位置。
+		currentclass - 返回被选元素的当前类名。
+		<br>switch:可选。布尔值，规定是否仅仅添加（true）或移除（false）类。
+		<br>
+		<br>
+		<div class="pause">
+			click me!
+		</div>
+		
+	</body>
+</html>
