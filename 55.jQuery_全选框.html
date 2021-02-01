@@ -18,6 +18,16 @@
 				var isChecked = $(this).prop('checked');
 				$('tbody input').prop('checked',isChecked);
 			})
+			$('tbody input').change(function(){
+				var allCount = $('tbody input').length;
+				var checkedCount = $('tbody input:checked').length;
+				if(allCount === checkedCount){
+					$('thead input').prop('checked',true);
+				}else{
+					$('thead input').prop('checked',false)
+				}
+				
+			})
 		})
 	</script>
 	<body>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		li{
+			margin: 10px;
+		}
+		p{
+			color: cornflowerblue;
+		}
+		div{
+			margin: 10px;
+			width: 100px;height: 100px;
+			background-color: cornflowerblue;
+			text-align: center;
+			line-height: 100px;
+		}
+	</style>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('button.showtext').click(function(){
+				$('p').show(1000,'linear',function(){
+					console.log('已完成显示');
+				})
+			})
+			$('button.hidetext').click(function(){
+				$('p').hide(1000,'swing',function(){
+					console.log('已完成隐藏');
+				})
+			})
+			$('button.showbox').click(function(){
+				$('div.box1').fadeIn();
+				$('div.box2').fadeIn('slow');
+				$('div.box3').fadeIn(3000);
+			})
+			$('button.hidebox').click(function(){
+				$('div.box1').fadeOut();
+				$('div.box2').fadeOut('slow');
+				$('div.box3').fadeOut(3000);
+			})
+		})
+	</script>
+	<body>
+		<ol>
+			<li>show/hide</li>
+			$(selector).hide(speed,callback); <br>
+			speed可以是 slow fast或者毫秒，callback是动画完成后执行的函数名。 <br>
+			<br>jquery自带linear和swing两种动画模式，可以通过插件自定义
+			<p>测试文字</p>
+			<button class="showtext">显示</button>
+			<button class="hidetext">隐藏</button>
+			<li>fadeIn/fadeOut</li>
+			<div class="box1">null</div>
+			<div class="box2">slow</div>
+			<div class="box3">3000ms</div>
+			<button class="showbox">显示</button>
+			<button class="hidebox">隐藏</button>
+			<li></li>
+			<li></li>
+		</ol>
+	</body>
+</html>
