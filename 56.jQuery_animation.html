@@ -11,12 +11,27 @@
 		p{
 			color: cornflowerblue;
 		}
-		div{
+		.box1,.box2,.box3{
 			margin: 10px;
 			width: 100px;height: 100px;
 			background-color: cornflowerblue;
 			text-align: center;
 			line-height: 100px;
+		}
+		#flip,#flap{
+			padding: 5px;
+			text-align: center;
+			background-color: cornflowerblue;
+			border: 1px solid #c3c3c3;
+		}
+		#flap{
+			padding: 50px;
+			display: none;
+		}
+		.animationtest{
+			width: 100px;height: 100px;
+			position: relative;
+			background-color: cornflowerblue;
 		}
 	</style>
 	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
@@ -42,6 +57,23 @@
 				$('div.box2').fadeOut('slow');
 				$('div.box3').fadeOut(3000);
 			})
+			$('#flip').click(function(){
+				$('#flap').slideToggle(1000,'swing');
+			})
+			$('button.test').click(function(){
+				$('.animationtest').animate({
+					left:'200px',
+					opacity:'0.5',
+					
+					
+				},2000).animate({
+					height:'200px',
+					width:'1000px',
+				},5000)
+			})
+			$('button.stop').click(function(){
+				$('.animationtest').stop();
+			})
 		})
 	</script>
 	<body>
@@ -59,8 +91,31 @@
 			<div class="box3">3000ms</div>
 			<button class="showbox">显示</button>
 			<button class="hidebox">隐藏</button>
-			<li></li>
-			<li></li>
+			<li>slideUp/slideDown/slideToggle</li>
+			在元素上创建滑动效果。 <br>
+			语法：$(selector).slideDown(speed,callback); <br>
+			<div id="flip">click me!</div>
+			<div id="flap">panel</div>
+			<li>animate/stop</li>
+			animate里调整所有需要动画的属性。基本上可以操作所有css属性。 <br>
+			默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。
+			如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute！ <br>
+			当使用 animate() 时，必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left，使用 marginRight 而不是 margin-right，等等。 <br>
+			<br><div class="animationtest"></div>
+			<br><button class="test">动画</button>
+			<button class="stop">停止</button>
+			<br>
+			stop函数停止队列中正在执行的动画效果。
 		</ol>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 	</body>
 </html>

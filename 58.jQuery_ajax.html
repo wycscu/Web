@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$.ajax({
+			type:'get',
+			url:'person.json',
+			data:{
+				name:'abc'
+			},
+			//传给服务器
+			success:function(resp){
+				
+				alert(resp.name+'\n状态：success')
+			},
+			error:function(){
+				alert('error!')
+			}
+		})
+		
+		//为了防止回调地狱
+		$.ajax({
+			type:'get',
+			url:'person.json',
+		}).done(function(){
+			
+		}).fail(function(){
+			
+		})
+		
+		$.ajax({
+			type:'get',
+			url:'api1'
+		}).done(function(){
+			$.ajax({url:'api2'}).done(function(){
+				return $.ajax({url:'api3'}).done(function(){
+					console.log('调用结束');
+				})
+			})
+		})
+	</script>
+	
+	<body>
+		
+	</body>
+</html>
