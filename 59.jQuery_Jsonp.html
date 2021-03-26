@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JSONP</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$.ajax({
+					type:'get',
+					url:'https://www.baidu.com/sugrec?prod=pc&wd=jsonp&cb=1',
+					
+					dataType:'jsonp',
+					//prod:'pc',
+					jsonp:'cb',
+					data:{
+						wd:'json'
+					}
+				}).done(function(resp){
+					for(i=0;i<resp.g.length;i++){
+						//var textnode = document.createTextNode(resp.g[i].p);
+						var text = '<li>'+resp.g[i].q + '</li>'
+						console.log(text)
+						$('ul').prepend(text);
+						
+						//alert(resp.g[i].q);
+					}
+					console.log(resp.length);
+				})
+			})
+			
+		</script>
+		<h2>使用例：百度搜索的下拉框</h2>
+		<a href="https://www.baidu.com/sugrec?prod=pc&wd=jsonp&cb=1">热词api</a>
+		<br>
+		更改wd即可实现词汇更换。cb：callback Function <br>
+		ajax:
+		<ul>
+			
+		</ul>
+	</body>
+</html>
