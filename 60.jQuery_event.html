@@ -7,14 +7,29 @@
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$('li').on('mouseover',function(){
+			
+			// $('li').on('mouseover',function(){
+			// 	$(this).css('background','red');
+			// }).on('mouseout',function(){
+			// 	$(this).css('background','green');
+			// });
+			
+			// $('li:eq(1)').off('mouseover');
+			// $('li:eq(1)').off('mouseout');
+			// $('button').click(function(){
+			// 	$('<li>HELLO WORLD</li>').appendTo('ul');
+			// })
+			
+			$('ul').on('mouseover','li:even',function(){
 				$(this).css('background','red');
-			}).on('mouseout',function(){
+			}).on('mouseout','li:even',function(){
 				$(this).css('background','green');
 			})
-			
-			$('li:eq(3)').off('mouseover');
+			$('button').click(function(){
+				$('<li>HELLO WORLD</li>').appendTo('ul');
+			})
 		})
+		
 		
 	</script>
 	<body>
@@ -27,6 +42,18 @@
 			<li>6</li>
 		</ul>
 		jquery chaining:在相同的元素上运行多条jQuery命令，把下一条event挂在上一条之后。 <br>
-		off可选两个参数：1. event type 2. callback name
+		on()/off()可选3个参数：<br>
+		1. event type <br>
+		2.selector <br>
+		3. callback name 
+		<br>
+		<br>
+		
+		<ol>
+			<li>appendTo <button type="button">Click me to append</button></li>
+			<br>新增的节点没有挂上mouseover和mouseout事件，需要使用事件代理
+		</ol>
+
+		
 	</body>
 </html>

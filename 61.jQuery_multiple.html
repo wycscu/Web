@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			var $el = $('<div><h2>new element</h2></div>');
+			//jquery对象变量
+			
+			//$('body').append($el);
+			$el.appendTo('body');
+			//两种方法任选其一，对同一个元素使用会覆盖之前的效果
+			
+			var $newFirst = $('<li>0</li>');
+			//$('ul').prepend($newFirst);
+			$newFirst.prependTo('ul');
+			
+			$('li:eq(3)').after('<li>3.5</li>');
+			$('<li>4.5</li>').insertAfter('li:eq(5)');
+			//由于计数方式在之前插入了新的节点后会乱序，不推荐使用
+			
+			$('button:first').click(function(){
+				$('li:last').remove(); //删除节点
+			})
+			
+			$('button:last').click(function(){
+				$('li:last').empty();//清空内容
+			})
+		})
+	</script>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<button type="button">remove</button><button type="button">empty</button>
+	</body>
+</html>
