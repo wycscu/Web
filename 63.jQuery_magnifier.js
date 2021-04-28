@@ -3,6 +3,7 @@
 				$.fn.extend({
 					magnifier:function(){
 						this.each(function(){
+							//this指向.magnifier DIV
 							var that = this;
 							$('.left',this).mousemove(function(evt){
 								var x = evt.offsetX;

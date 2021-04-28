@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+		<script type="text/javascript">
+			//1.
+			function a(){
+			    var user = "王雨琛";
+			    console.log(this.user); //undefined
+			    console.log(this); //Window
+			}
+			a();
+			
+			//2.
+			var o = {
+			    user:"王雨琛",
+			    fn:function(){
+			        console.log(this.user);  //王雨琛
+			    }
+			}
+			o.fn();
+			
+			//3.
+			var o = {
+			    a:10,
+			    b:{
+			        a:12,
+			        fn:function(){
+			            console.log(this.a); //12
+			        }
+			    }
+			}
+			o.b.fn();
+			
+			//3. another case
+			var o = {
+			    c:10,
+			    b:{
+			       c:12,
+			        fn:function(){
+			            console.log(this.c); //undefined
+			            console.log(this); //window
+			        }
+			    }
+			}
+			var j = o.b.fn;
+			j();
+		</script>
+	<body>
+		<ol>
+			<li>1.如果一个函数中有this，但是它没有被上一级的对象所调用，那么this指向的就是window。</li>
+			<li>2.如果一个函数中有this，这个函数有被上一级的对象所调用，那么this指向的就是上一级的对象。</li>
+			<li>3.如果一个函数中有this，这个函数中包含多个对象，尽管这个函数是被最外层的对象所调用，this指向的也只是它上一级的对象</li>
+		</ol>
+	</body>
+</html>

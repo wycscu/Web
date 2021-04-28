@@ -4,6 +4,65 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<script src="64.normal.js" type="text/javascript" charset="utf-8"></script>
+	<script src="64.guncarrier.js" type="text/javascript" charset="utf-8"></script>
+	<script src="64.strong.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//1.单例模式(大龙)
+		function DarkLord(){
+			if(!DarkLord._instance){
+				DarkLord._instance = {
+					f1:function(){
+						
+					},
+					f2:function(){
+						
+					},
+				}
+			}
+			return DarkLord._instance;
+		}
+			
+		
+		//2.工厂模式（兵线）
+		function Factory(){
+			
+		}
+		
+		Factory().create = function(type){
+			case 'normal':
+			return new Normal();
+			case 'guncarrier':
+			return new GunCarrier();
+			case 'strong':
+			return new Strong();
+			default:
+				break;
+		}
+	</script>
+	<script type="text/javascript">
+		var s1 = Factory().create('normal');
+	</script>
 	<body>
+		<ol>
+			<li>
+				1.单例模式<br>
+			</li>
+			<li>
+				2.工厂模式<br>
+			</li>
+			<li>
+				3.模式<br>
+			</li>
+			<li>
+				4.模式<br>
+			</li>
+			<li>
+				5.模式<br>
+			</li>
+			<li>
+				6.模式<br>
+			</li>
+		</ol>
 	</body>
 </html>
