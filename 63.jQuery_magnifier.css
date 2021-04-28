@@ -1,0 +1,38 @@
+.magnifier .left .mask{
+			/*遮罩场*/
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: black;
+			opacity: 0;
+		}
+		.magnifier .left{
+			width: 250px;height: 150px;
+			float:left;
+			position: relative;
+		}
+		
+		.magnifier .left img{
+			width: 250px;height: 150px;
+		}
+		
+		.magnifier .float{
+			width: 50px;height: 50px;
+			background-color: hotpink;
+			opacity: 0.5;
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+		
+		.magnifier .right{
+			width: 200px;
+			height: 200px;
+			background-image: url(imgs/big.png);
+			float:left;
+			margin-left:50px ;
+			display: none;
+		}
