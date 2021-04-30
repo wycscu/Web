@@ -4,9 +4,13 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+
 	<script src="64.normal.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.guncarrier.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.strong.js" type="text/javascript" charset="utf-8"></script>
+	<script src="64.Factory.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="64.1.Strategy.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		//1.单例模式(大龙)
 		function DarkLord(){
@@ -25,43 +29,48 @@
 			
 		
 		//2.工厂模式（兵线）
-		function Factory(){
-			
+	var s1 = Factory.create('normal');
+	var s2 = Factory.create('guncarrier');
+	var s3 = Factory.create('strong'); 
+	setInterval(function(){
+		Factory.create('normal');
+	},1000)
+	
+	//3.策略模式
+		function Go2Victory(stra){
+			this.strategy = stra;
 		}
 		
-		Factory().create = function(type){
-			case 'normal':
-			return new Normal();
-			case 'guncarrier':
-			return new GunCarrier();
-			case 'strong':
-			return new Strong();
-			default:
-				break;
+		Go2Victory.prototype.victory = function(){
+			this.strategy.tactics();
 		}
+		
+		var v = new Go2Victory(new StrategyA());
+		v.victory();
+		
+		
+	//4.适配器模式
 	</script>
-	<script type="text/javascript">
-		var s1 = Factory().create('normal');
-	</script>
+
 	<body>
 		<ol>
 			<li>
-				1.单例模式<br>
+				单例模式<br>
 			</li>
 			<li>
-				2.工厂模式<br>
+				工厂模式<br>
 			</li>
 			<li>
-				3.模式<br>
+				策略模式<br>
 			</li>
 			<li>
-				4.模式<br>
+				适配器模式<br>
 			</li>
 			<li>
-				5.模式<br>
+				模式<br>
 			</li>
 			<li>
-				6.模式<br>
+				模式<br>
 			</li>
 		</ol>
 	</body>
