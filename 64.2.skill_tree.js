@@ -15,5 +15,5 @@ Skill_Tree.prototype.skill_three = function(){
 }
 
 Skill_Tree.prototype.skill_four = function(){
-	
+
 }
