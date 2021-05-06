@@ -4,17 +4,23 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+
 	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+
 	<script src="64.normal.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.guncarrier.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.strong.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.Factory.js" type="text/javascript" charset="utf-8"></script>
 	
+
 	<script src="64.Adaptor_renma.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.Adaptor_guanyu.js" type="text/javascript" charset="utf-8"></script>
 	
 	<script src="64.2.Hero.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.2.message.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="64.1.Strategy.js" type="text/javascript" charset="utf-8"></script>
+
 	<script type="text/javascript">
 		//1.单例模式(大龙)
 		function DarkLord(){
@@ -33,6 +39,7 @@
 			
 		
 		//2.工厂模式（兵线）
+
 	
 	
 		//4.适配器模式(接口调用)
@@ -84,9 +91,50 @@
 			</li>
 			<li>
 				5.观察者模式<br>
+
+	var s1 = Factory.create('normal');
+	var s2 = Factory.create('guncarrier');
+	var s3 = Factory.create('strong'); 
+	setInterval(function(){
+		Factory.create('normal');
+	},1000)
+	
+	//3.策略模式
+		function Go2Victory(stra){
+			this.strategy = stra;
+		}
+		
+		Go2Victory.prototype.victory = function(){
+			this.strategy.tactics();
+		}
+		
+		var v = new Go2Victory(new StrategyA());
+		v.victory();
+		
+		
+	//4.适配器模式
+	</script>
+
+	<body>
+		<ol>
+			<li>
+				单例模式<br>
 			</li>
 			<li>
-				6.模式<br>
+				工厂模式<br>
+			</li>
+			<li>
+				策略模式<br>
+			</li>
+			<li>
+				适配器模式<br>
+			</li>
+			<li>
+				模式<br>
+
+			</li>
+			<li>
+				模式<br>
 			</li>
 		</ol>
 		<span><a href="https://www.runoob.com/design-pattern/design-pattern-tutorial.html">附：所有的模式</a></span>
