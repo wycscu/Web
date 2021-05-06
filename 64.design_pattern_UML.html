@@ -4,9 +4,17 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.normal.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.guncarrier.js" type="text/javascript" charset="utf-8"></script>
 	<script src="64.strong.js" type="text/javascript" charset="utf-8"></script>
+	<script src="64.Factory.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="64.Adaptor_renma.js" type="text/javascript" charset="utf-8"></script>
+	<script src="64.Adaptor_guanyu.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="64.2.Hero.js" type="text/javascript" charset="utf-8"></script>
+	<script src="64.2.message.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		//1.单例模式(大龙)
 		function DarkLord(){
@@ -25,44 +33,65 @@
 			
 		
 		//2.工厂模式（兵线）
-		function Factory(){
-			
-		}
-		
-		Factory().create = function(type){
-			case 'normal':
-			return new Normal();
-			case 'guncarrier':
-			return new GunCarrier();
-			case 'strong':
-			return new Strong();
-			default:
-				break;
-		}
+	
+	
+		//4.适配器模式(接口调用)
 	</script>
 	<script type="text/javascript">
-		var s1 = Factory().create('normal');
+		$(function(){
+			var s1 = Factory.create('normal');
+			
+			var gy =new guanyu();
+			gy.skill_one();
+			gy.skill_two();
+			//5.观察者模式
+			var msg = new Message();
+			var hz =new Hero('黄忠',msg);
+			var lb =new Hero('吕布',msg);
+			var zy =new Hero('周瑜',msg);
+			msg.attach(hz);
+			msg.attach(lb);
+			msg.attach(zy);
+			
+			$('button:first-of-type').click(function(){
+				msg.setState('first blood');
+			})
+			
+			$('button:last-of-type').click(function(){
+				msg.setState('double kill');
+			}) 
+		})
+		
+		
 	</script>
 	<body>
 		<ol>
 			<li>
 				1.单例模式<br>
+				单例模式要求某一类能够有返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）。
 			</li>
 			<li>
 				2.工厂模式<br>
+				核心的工厂类不再负责所有的产品的创建，而是将具体创建的工作交给子类去做。该核心类成为一个抽象工厂角色，仅负责给出具体工厂子类必须实现的接口，而不接触哪一个产品类应当被实例化这种细节。
 			</li>
 			<li>
-				3.模式<br>
+				3.策略模式<br>
+				一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。
 			</li>
 			<li>
-				4.模式<br>
+				4.适配器模式<br>
+				适配器模式（Adapter Pattern）是作为两个不兼容的接口之间的桥梁。它结合了两个独立接口的功能。
 			</li>
 			<li>
-				5.模式<br>
+				5.观察者模式<br>
 			</li>
 			<li>
 				6.模式<br>
 			</li>
 		</ol>
+		<span><a href="https://www.runoob.com/design-pattern/design-pattern-tutorial.html">附：所有的模式</a></span>
+		<button type="button">first blood</button>
+		<button type="button">double kill</button>
+	
 	</body>
 </html>
