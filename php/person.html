@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$.get('05_person.php',{arg:"name"},function(resp){
+			
+			//console.log(resp);
+			$('.name').append(resp);
+			
+		})
+		
+		$.get('05_person.php',{arg:"exes"},function(resp){
+			//console.log(resp);
+			//alert(resp); //string=>array
+			for(var i=0; i<resp.length;i++){
+				$('.exes').append(resp[i] + ',');
+			}
+			
+		})
+		
+	</script>
+	<body>
+		<div class='name'>name:</div>
+		<div class='age'>age:</div>
+		<div class='gender'>gender:</div>
+		<div class='exes'>exes:</div>
+		注意：即使resp的内容是数组，但是没有标明类型，因此要加header（头信息），否则会自动解析，得到【..】字符串，这不是我们需要的结果。
+	</body>
+</html>
