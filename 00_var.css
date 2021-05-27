@@ -1,0 +1,17 @@
+div {
+  font-size: 20px; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+.box {
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 100%;
+  height: 100%; }
+  .box .pic {
+    padding: 10px; }
+    .box .pic img {
+      border: 1px solid aqua;
+      width: 1000px; }
